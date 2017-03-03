@@ -14,8 +14,15 @@ export class HeroService {
   getHeroSlowly(): Promise<Hero[]> {
     var timer = 2000;
     // 寫法一：http://origin.angular.live/docs/ts/latest/tutorial/toh-pt4.html#!#slow
-    return new Promise(resolve => {
-      setTimeout(() => resolve(this.getHeroes()), timer);
+    // return new Promise(resolve => {
+    //   setTimeout(() => resolve(this.getHeroes()), timer);
+    // });
+
+    // 寫法二
+    return new Promise(function (resolve) {
+      setTimeout(function () {
+        resolve(HEROES);
+      }, timer);
     });
   }
 }
