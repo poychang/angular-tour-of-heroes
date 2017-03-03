@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
+import { Location } from '@angular/common';
 import 'rxjs/add/operator/switchMap';
 
 import { Hero } from './../models/hero';
@@ -14,7 +15,8 @@ export class HeroDetailComponent implements OnInit {
 
   constructor(
     private heroService: HeroService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private location: Location
   ) { }
 
   ngOnInit(): void {
@@ -25,4 +27,8 @@ export class HeroDetailComponent implements OnInit {
 
   @Input()
   hero: Hero;
+
+  goBack(): void {
+    this.location.back();
+  }
 }
