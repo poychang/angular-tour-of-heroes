@@ -18,16 +18,15 @@ import { HeroService } from "./hero.service";
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    RouterModule.forRoot([
+      {
+        path: 'heroes',
+        component: HeroesComponent
+      }
+    ])
   ],
   providers: [HeroService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
-
-RouterModule.forRoot([
-  {
-    path: 'heroes',
-    component: HeroesComponent
-  }
-])
