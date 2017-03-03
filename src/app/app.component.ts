@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import * as _ from 'lodash'
+
 import { Hero } from './models/hero';
 
 @Component({
