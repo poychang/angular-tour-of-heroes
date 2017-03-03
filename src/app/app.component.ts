@@ -20,6 +20,9 @@ export class AppComponent {
   onSelect(hero: Hero): void {
     this.selectedHero = hero;
   }
+  getNext(): Hero {
+    return this.selectedHero ? this.heroes.filter(p => p.id === this.selectedHero.id + 1).pop() : undefined;
+  }
 }
 
 const HEROES: Hero[] = [
