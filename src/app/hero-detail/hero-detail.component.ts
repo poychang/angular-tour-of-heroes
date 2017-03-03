@@ -20,8 +20,18 @@ export class HeroDetailComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    // 原本的做法
+    // this.route.params
+    //   .switchMap((params: Params) => this.heroService.getHero(+params['id']))
+    //   .subscribe(hero => this.hero = hero);
+
+    // 包含多個 Statement 時的 Arrow Function
+    // 查看路由參數 params
     this.route.params
-      .switchMap((params: Params) => this.heroService.getHero(+params['id']))
+      .switchMap((params: Params) => {
+        console.log(params);
+        return this.heroService.getHero(+params['id']);
+      })
       .subscribe(hero => this.hero = hero);
   }
 

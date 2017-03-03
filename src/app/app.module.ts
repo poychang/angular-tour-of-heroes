@@ -32,7 +32,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
         component: HeroesComponent
       },
       {
-        path: 'detail/:id',
+        path: 'detail/:id/:name',
         component: HeroDetailComponent
       },
       {
