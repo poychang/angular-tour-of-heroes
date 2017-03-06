@@ -11,6 +11,7 @@ export class HeroService {
 
   constructor(private http: Http) { }
 
+  private headers = new Headers({ 'Content-Type': 'application/json' });
   private herourl = 'api/heroes'; // URL to web api
   private handleError(error: any): Promise<any> {
     console.error('An error occurred', error); // for demo purposes only
@@ -28,6 +29,13 @@ export class HeroService {
     return this.http.get(url)
       .toPromise()
       .then(response => response.json().data as Hero)
+      .catch(this.handleError);
+  }
+  update(hero: Hero): Promise<Hero> {
+    const url = `${this.herourl}/${hero.id}`;
+    return this.http.put(url, JSON.stringify(hero), { headers: this.headers })
+      .toPromise()
+      .then(() => hero)
       .catch(this.handleError);
   }
 }
